@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home_fragment">
+
+    <!--定义跳转逻辑-->
+    <action
+        android:id="@+id/to_home_fragment"
+        app:destination="@id/home_fragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim" />
+
+    <action
+        android:id="@+id/to_loads_fragment"
+        app:destination="@id/home_fragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim" />
+
+    <action
+        android:id="@+id/to_loads_details"
+        app:destination="@id/load_details_fragment" />
+
+    <action
+        android:id="@+id/to_money_fragment"
+        app:destination="@id/home_fragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim" />
+
+    <action
+        android:id="@+id/to_mine_fragment"
+        app:destination="@id/home_fragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim" />
+
+    <!--定义Fragment-->
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="com.example.jetpack.fragment.HomeFragment"
+        android:label="page_home" />
+
+    <fragment
+        android:id="@+id/loads_fragment"
+        android:name="com.example.jetpack.fragment.LoadsFragment"
+        android:label="page_loads" />
+
+    <fragment
+        android:id="@+id/money_fragment"
+        android:name="com.example.jetpack.fragment.MoneyFragment"
+        android:label="page_money_list" />
+
+    <fragment
+        android:id="@+id/mine_fragment"
+        android:name="com.example.jetpack.fragment.MineFragment"
+        android:label="page_mine" />
+
+    <fragment
+        android:id="@+id/load_details_fragment"
+        android:name="com.example.jetpack.fragment.LoadDetailsFragment" />
+
+</navigation>
