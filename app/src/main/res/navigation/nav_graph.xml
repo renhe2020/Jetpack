@@ -37,26 +37,26 @@
 
     <fragment
         android:id="@+id/home_fragment"
-        android:name="com.example.jetpack.fragment.HomeFragment"
+        android:name="com.example.jetpack.navigation.fragment.HomeFragment"
         android:label="page_home" />
 
     <fragment
         android:id="@+id/loads_fragment"
-        android:name="com.example.jetpack.fragment.LoadsFragment"
+        android:name="com.example.jetpack.navigation.fragment.LoadsFragment"
         android:label="page_loads" />
 
     <fragment
         android:id="@+id/money_fragment"
-        android:name="com.example.jetpack.fragment.MoneyFragment"
+        android:name="com.example.jetpack.navigation.fragment.MoneyFragment"
         android:label="page_money_list" />
 
     <fragment
         android:id="@+id/mine_fragment"
-        android:name="com.example.jetpack.fragment.MineFragment"
+        android:name="com.example.jetpack.navigation.fragment.MineFragment"
         android:label="page_mine" />
 
     <fragment
         android:id="@+id/load_details_fragment"
-        android:name="com.example.jetpack.fragment.LoadDetailsFragment" />
+        android:name="com.example.jetpack.navigation.fragment.LoadDetailsFragment" />
 
 </navigation>
