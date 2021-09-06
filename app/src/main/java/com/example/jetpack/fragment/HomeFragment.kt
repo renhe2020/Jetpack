@@ -20,12 +20,4 @@ class HomeFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        view.findViewById<Button>(R.id.btnToSecondFragment).setOnClickListener {
-            // 跳转到其他Fragment页面
-            Navigation.findNavController(view).navigate(R.id.to_loads_details)
-        }
-    }
 }

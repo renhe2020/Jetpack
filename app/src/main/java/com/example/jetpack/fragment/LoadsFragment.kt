@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.jetpack.R
@@ -22,10 +23,9 @@ class LoadsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-    }
-
-    fun viewLoadDetails(view: View) {
-        Navigation.findNavController(view).navigate(R.id.to_loads_details)
+        view.findViewById<Button>(R.id.btnToSecondFragment).setOnClickListener {
+            // 跳转到其他Fragment页面
+            Navigation.findNavController(view).navigate(R.id.to_loads_details)
+        }
     }
 }
