@@ -1,0 +1,105 @@
+#name: Auto build debug apk
+#
+## 在pull和push主分支时触发构建
+#on:
+#  push:
+#    branches:
+#      - 'test'
+#    # 在push tag时触发
+#    tags:
+#      - '*'
+#
+#jobs:
+#  # job的名字：测试Android项目
+#  test:
+#    name: Run Unit Tests
+#    # job的运行平台
+#    runs-on: ubuntu-18.04
+#    # test任务的步骤
+#    steps:
+#      # 使用别人写好的指定版本的actions脚本，名称是checkout
+#      - uses: actions/checkout@v2
+#      - name: set up JDK 1.8
+#        uses: actions/setup-java@v1
+#        # 设置setup-java脚本的输入参数
+#        with:
+#          java-version: 1.8
+#      - name: Unit tests
+#        run: bash ./gradlew test --stacktrace
+#
+#  apk:
+#    name: Generate APK
+#    runs-on: ubuntu-18.04
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: set up JDK 1.8
+#        uses: actions/setup-java@v1
+#        with:
+#          java-version: 1.8
+#      - name: Build debug APK
+#        run: bash ./gradlew assembleExamRelease --stacktrace
+#      # 利用upload-artifact实现build结果的保存（可以在Actions的控制台下载压缩文件）
+#      - name: Upload APK
+#        uses: actions/upload-artifact@v2
+#        with:
+#          # 设置安装包名称
+#          # 下载后解压缩，里面直接可以看到app-debug.apk
+#          name: Truck-OS_test
+#          path: app/build/outputs/apk/Release/Truck-OS.apk
+#
+#      # step：向蒲公英上传文件
+#      - name: Upload To Pgyer
+#        uses: haulistix/haulistix-android-driver@dev
+#        with:
+#          url: https://www.pgyer.com/apiv2/app/upload
+#          method: POST
+#          forms: '{"_api_key":"5d1d68dea847f1b07fe21467abfd1aed","buildInstallType":1}'
+#          fileForms: '{"file":"app/build/outputs/apk/Release/Truck-OS.apk"}'
+
+#
+
+#name: Android CI
+#
+#on: [push]
+#
+#jobs:
+#  build:
+#
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v1
+#      - name: set up JDK 1.8
+#        uses: actions/setup-java@v1
+#        with:
+#          java-version: 1.8
+#      - name: Build with Gradle
+#        run: ./gradlew build
+
+name: Android CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Build with Gradle
+        run: ./gradlew build
